@@ -204,10 +204,12 @@ public class Matrix {
 		if ((n == 0)||(m==0)) {
 			System.out.println("Matrix is empty");
 		}
-		for(int j=0; j<m; j++) {
-			for(int i=0; i<n; i++)
-				data[i][j] *= mult;
-			}
+		else {
+			for(int j=0; j<m; j++) {
+				for(int i=0; i<n; i++)
+					data[i][j] *= mult;
+				}
+		}
 	}
 	
 }
