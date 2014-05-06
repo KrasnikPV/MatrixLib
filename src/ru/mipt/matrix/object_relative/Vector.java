@@ -1,7 +1,7 @@
-package object_relative;
+package ru.mipt.matrix.object_relative;
 
-import object_non_relative.MAct;
-import object_non_relative.VAct;
+import ru.mipt.matrix.object_non_relative.MAct;
+import ru.mipt.matrix.object_non_relative.VAct;
 
 public class Vector extends Matrix {
 	public Vector(int m) {

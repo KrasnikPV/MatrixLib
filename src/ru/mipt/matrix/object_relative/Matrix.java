@@ -1,4 +1,4 @@
-package object_relative;
+package ru.mipt.matrix.object_relative;
 
 import java.util.Random;
 

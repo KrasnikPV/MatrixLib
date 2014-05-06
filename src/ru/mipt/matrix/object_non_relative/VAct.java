@@ -1,7 +1,7 @@
-package object_non_relative;
+package ru.mipt.matrix.object_non_relative;
 
-import object_relative.Matrix;
-import object_relative.Vector;
+import ru.mipt.matrix.object_relative.Matrix;
+import ru.mipt.matrix.object_relative.Vector;
 
 
 public class VAct {

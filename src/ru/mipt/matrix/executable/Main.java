@@ -1,7 +1,7 @@
-package executable;
-import object_non_relative.MAct;
-import object_non_relative.VAct;
-import object_relative.*;
+package ru.mipt.matrix.executable;
+import ru.mipt.matrix.object_non_relative.MAct;
+import ru.mipt.matrix.object_non_relative.VAct;
+import ru.mipt.matrix.object_relative.*;
 
 public class Main {
 
@@ -60,8 +60,4 @@ public class Main {
 		D.print();
 		System.out.println("length2 of " +vLong1.toString()+ " in D metrics: "+vLong1.length2(D));
 	}
-		
-		
-
-
 }

@@ -1,6 +1,6 @@
-package object_non_relative;
+package ru.mipt.matrix.object_non_relative;
 
-import object_relative.Matrix;
+import ru.mipt.matrix.object_relative.Matrix;
 
 public final class MAct {
 	public static Matrix mult(Matrix A, Matrix B) {
