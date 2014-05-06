@@ -171,11 +171,11 @@ public class Matrix {
 		this.n--;
 		this.data = newData;
 	}
-	public void addLine(int y){
+	public void addLine(int y){ //y i the position of the new line
 		long[][] newData = new long[this.n][this.m+1];
 		int skip = 0;
 
-		for(int j=0; j<this.m+1; j++){
+		for(int j=0; j<this.m; j++){
 			if (j==y) {
 				skip = 1;
 			}
@@ -185,11 +185,11 @@ public class Matrix {
 		this.m++;
 		this.data = newData;
 	}
-	public void addColumn(int x){
+	public void addColumn(int x){//x is the position of the new column
 		long[][] newData = new long[this.n+1][this.m];
 		int skip = 0;
 		
-		for(int i=0; i<this.n+1; i++){
+		for(int i=0; i<this.n; i++){
 			if (i==x) {
 				skip = 1;
 			}

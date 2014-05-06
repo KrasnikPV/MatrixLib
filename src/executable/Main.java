@@ -19,8 +19,8 @@ public class Main {
 		MAct.mult(A, B).print();
 		System.out.println("det(A): "+MAct.det(A)+" det(B): "+MAct.det(B));
 		A.deleteLine(0);
-		A.deleteColumn(0);
 		Matrix C = B.minor(0, B.maxLineNumber());
+		C.addColumn(1);
 		System.out.println("Matrix A: ");
 		A.print();
 		System.out.println("Matrix C: ");
@@ -53,6 +53,15 @@ public class Main {
 		B.print();
 		B.multimplyBy(4);
 		System.out.println("v1*(4*B)*v2 ="+VAct.form(v1, B, v2));
+		
+		Matrix D = new Matrix (4, 4);
+		D.fill();
+		System.out.println("Matrix D: ");
+		D.print();
+		System.out.println("length2 of " +vLong1.toString()+ " in D metrics: "+vLong1.length2(D));
 	}
+		
+		
+
 
 }
