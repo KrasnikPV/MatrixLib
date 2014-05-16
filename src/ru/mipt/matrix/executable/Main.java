@@ -33,6 +33,10 @@ public class Main {
 			System.out.println("Something with \"Matrixes\"\'s size just went wrong, maybe this could help you to fix the problem:");
 			e.printStackTrace();
 		}
+		catch (NullPointerException e) {
+			System.out.println("Don\'t make me sad with those null pointers");
+			e.printStackTrace();
+		}
 		
 		//SHORT VECTOR
 		Vector v1 = new Vector (2, 0, 0);
@@ -42,6 +46,10 @@ public class Main {
 		System.out.println("Mixed product of those vectors: "+VAct.mMult(v1, v2, VAct.vMult(v1, v2))); }
 		catch (InvalidSizeException e) {
 			System.out.println("Something with \"Short Vectors\" just went wrong, maybe this could help you to fix the problem:");
+			e.printStackTrace();
+		}
+		catch (NullPointerException e) {
+			System.out.println("Don\'t make me sad with those null pointers");
 			e.printStackTrace();
 		}
 		//LONG VECTOR
@@ -56,6 +64,10 @@ public class Main {
 		System.out.println('['+vLong1.toString()+'+'+vLong2.toString()+"]*"+vLong3.toString()+'='+VAct.sum(vLong1, vLong2).toString()+'*'+vLong3.toString()+'='+VAct.sMult(VAct.sum(vLong1, vLong2), vLong3)); }
 		catch (InvalidSizeException e) {
 			System.out.println("Something with \"Long Vectors\" just went wrong, maybe this could help you to fix the problem:");
+			e.printStackTrace();
+		}
+		catch (NullPointerException e) {
+			System.out.println("Don\'t make me sad with those null pointers");
 			e.printStackTrace();
 		}
 		//Misc
@@ -73,6 +85,10 @@ public class Main {
 		System.out.println("length2 of " +vLong1.toString()+ " in D metrics: "+vLong1.length2(D));
 		} catch (InvalidSizeException e) {
 			System.out.println("Something with \"Misc\" just went wrong, maybe this could help you to fix the problem:");
+			e.printStackTrace();
+		}
+		catch (NullPointerException e) {
+			System.out.println("Don\'t make me sad with those null pointers");
 			e.printStackTrace();
 		}
 		
