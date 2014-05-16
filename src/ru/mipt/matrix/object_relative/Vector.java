@@ -1,5 +1,6 @@
 package ru.mipt.matrix.object_relative;
 
+import exceptions.InvalidSizeException;
 import ru.mipt.matrix.object_non_relative.MAct;
 import ru.mipt.matrix.object_non_relative.VAct;
 
@@ -22,15 +23,14 @@ public class Vector extends Matrix {
 	}
 	
 	
-	public double length(){
+	public double length() throws InvalidSizeException{
 		if (this.getM() == 0) {
-			System.out.println("Error: can't calculate length for 0d vector");
-			return 0;
+			throw new InvalidSizeException("Error: can't calculate length for 0d vector");
 		}
 		return Math.sqrt(VAct.sMult(this, this));
 	}
 	
-	public long length2(Matrix G) {		
+	public long length2(Matrix G) throws InvalidSizeException {		
 		if (this.getM() == 0) {
 			System.out.println("Error: can't calculate length for 0d vector");
 			return 0;
@@ -38,7 +38,7 @@ public class Vector extends Matrix {
 		return MAct.mult(MAct.mult(this.t(), G), this).data[0][0];
 	}
 	
-	public long length2() {		
+	public long length2() throws InvalidSizeException {		
 		if (this.getM() == 0) {
 			System.out.println("Error: can't calculate length for 0d vector");
 			return 0;

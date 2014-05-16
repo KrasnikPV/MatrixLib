@@ -1,23 +1,18 @@
 package ru.mipt.matrix.object_non_relative;
 
+import exceptions.InvalidSizeException;
 import ru.mipt.matrix.object_relative.Matrix;
 
 public final class MAct {
-	public static Matrix mult(Matrix A, Matrix B) {
+	public static Matrix mult(Matrix A, Matrix B) throws InvalidSizeException {
 		if ((A == null) || (B == null)) {
-			Matrix result = new Matrix(0, 0);
-			System.out.println("Error: linking to non-object");
-			return result;
+			throw new NullPointerException("Error: linking to non-object");
 		}
 		if ((A.getN() == 0) || (A.getM() == 0) || (B.getN() == 0) || (B.getM() == 0)){
-			System.out.println("Error: product can not be calculated 'cause of the previous error");
-			Matrix result = new Matrix(0, 0);
-			return result;
+			throw new InvalidSizeException("Error: product can not be calculated 'cause of the previous error");
 		}
 		if (A.getN() != B.getM()) {
-			Matrix result = new Matrix(0, 0);
-			System.out.println("Error: can\'t multiply these matrixes");
-			return result;
+			throw new InvalidSizeException("Error: can\'t multiply these matrixes");
 		}
 		Matrix result = new Matrix(A.getM(), B.getN());
 		
@@ -25,30 +20,22 @@ public final class MAct {
 			for (int j=0; j<B.getN(); j++){
 				for (int k=0; k<A.getN(); k++){
 					result.addData(i, j, A.getData(k, i)*B.getData(j, k));
-				}
-					
-				
+				}				
 			}
 		}
 		
 		return result.t();
 	}
 	
-	public static Matrix sum(Matrix A, Matrix B){
+	public static Matrix sum(Matrix A, Matrix B) throws InvalidSizeException{
 		if ((A == null) || (B == null)) {
-			Matrix result = new Matrix(0, 0);
-			System.out.println("Error: linking to non-object");
-			return result;
+			throw new NullPointerException("Error: linking to non-object");
 		}
 		if ((A.getN() != B.getN()) || (A.getM() != B.getM())) {
-			System.out.println("Error: can\'t add these matrixes");
-			Matrix result = new Matrix(0, 0);
-			return result;
+			throw new InvalidSizeException("Error: can\'t add these matrixes");
 		}
 		if (A.getN() == 0){
-			System.out.println("Error: mtr sum can not be calculated 'cause of the previous error");
-			Matrix result = new Matrix(0, 0);
-			return result;
+			throw new InvalidSizeException("Error: mtr sum can not be calculated 'cause of the previous error");
 		}
 		Matrix result = new Matrix(A.getN(), B.getM());
 		
@@ -59,20 +46,17 @@ public final class MAct {
 		return result;
 	}
 	
-	public static long det(Matrix A) {
+	public static long det(Matrix A) throws InvalidSizeException {
 		long det = 0;
 		if ((A == null)) {
-			System.out.println("Error: linking to non-object");
-			return det;
+			throw new NullPointerException("Error: linking to non-object");
 		}
 		int a = A.getN();
 		if (a != A.getM()) {
-			System.out.println("Error: determinant can be calculated only if the mtr is squared");
-			return det;
+			throw new InvalidSizeException("Error: determinant can be calculated only if the mtr is squared");
 		}
 		if (a == 0){
-			System.out.println("Error: determinant can not be calculated 'cause of the previous error");
-			return det;
+			throw new InvalidSizeException("Error: determinant can not be calculated 'cause of the previous error");
 		}
 		if (a == 1){
 			det = A.getData(0,0);

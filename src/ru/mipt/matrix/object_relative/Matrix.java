@@ -2,7 +2,7 @@ package ru.mipt.matrix.object_relative;
 
 import java.util.Random;
 
-import object_non_relative.MAct;
+import exceptions.InvalidSizeException;
 
 public class Matrix {
 	protected long[][] data;
@@ -12,10 +12,10 @@ public class Matrix {
 	public Matrix(int n, int m){
 		//builds empty axb matrix 
 		if ((n<1) || (m<1)) {
-			System.out.println("Error: can't build matrix "+n+'x'+m);
 			this.n = 0;
 			this.m = 0;
 			data = null;
+			throw new IllegalArgumentException("Error: can't build matrix "+n+'x'+m);
 		}
 		else {
 			this.n = n;
@@ -75,21 +75,29 @@ public class Matrix {
 	
 	
 	public long getData(int i, int j){
+		if ((i>=n) || (j>=m))
+			throw new ArrayIndexOutOfBoundsException("Can\'t give a field out of matrix");
 		return this.data[i][j];
 	}
 	public void setData(int i, int j, long newValue){
+		if ((i>=n) || (j>=m))
+			throw new ArrayIndexOutOfBoundsException("Can\'t set a field out of matrix");
 		this.data[i][j] = newValue;
 	}
 	public void addData(int x, int y, long diff) {
+		if ((x>=n) || (y>=m))
+			throw new ArrayIndexOutOfBoundsException("Can\'t edit a field out of matrix");
 		this.data[x][y] += diff;
 	}
 	public void editField(int x, int y, long newValue){
+		if ((x>=n) || (y>=m))
+			throw new ArrayIndexOutOfBoundsException("Can\'t edit a field out of matrix");
 		this.data[x][y] = newValue;
 	}
 
-	public void print() {
+	public void print() throws InvalidSizeException {
 		if ((n == 0)||(m==0)) {
-			System.out.println("Matrix is empty");
+			throw new InvalidSizeException("Matrix to print is empty");
 		}
 		for(int j=0; j<m; j++) {
 			for(int i=0; i<n; i++)
@@ -123,8 +131,8 @@ public class Matrix {
 		
 		return result;
 	}
-	public long det(){
-		return MAct.det(this);
+	public long det() throws InvalidSizeException{
+		return ru.mipt.matrix.object_non_relative.MAct.det(this);
 	}
 	
 	public void addLine(){
@@ -200,9 +208,9 @@ public class Matrix {
 		this.data = newData;
 	}
 
-	public void multimplyBy(int mult) {
+	public void multimplyBy(int mult) throws InvalidSizeException {
 		if ((n == 0)||(m==0)) {
-			System.out.println("Matrix is empty");
+			throw new InvalidSizeException("Matrix is empty");
 		}
 		else {
 			for(int j=0; j<m; j++) {
